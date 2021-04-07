@@ -18,12 +18,10 @@ int main()
 
 void loop(){
     while(1){
-        msg0.data.data.x = 0.123;
-        msg0.data.data.y = 0.456;
-        msg0.data.data.z = 0.321;
-
-        dev.write(0, &msg0);
-
+        if(dev.read() == 0){
+            msg0 = msg1;
+            dev.write(0, &msg0);
+        }
         wait_ms(20);
     }
 }
